@@ -1,0 +1,79 @@
+2025-11-12 00:30:49,243 - INFO - ShieldNet App Initialized Successfully with full Socket.IO logging
+2025-11-12 00:38:21,507 - INFO - ShieldNet App Initialized Successfully with full Socket.IO logging
+2025-11-12 01:21:09,975 - INFO - ShieldNet App Initialized Successfully with full Socket.IO logging
+2025-11-12 01:33:11,139 - INFO - ShieldNet App Initialized Successfully with full Socket.IO logging
+2025-11-12 09:46:09,734 - INFO - ShieldNet App Initialized Successfully with full Socket.IO logging
+2025-11-12 10:04:16,905 - INFO - ShieldNet App Initialized Successfully with full Socket.IO logging
+2025-11-12 10:13:20,329 - INFO - ShieldNet App Initialized Successfully with full Socket.IO logging
+2025-11-12 10:25:14,291 - INFO - ShieldNet App Initialized Successfully with full Socket.IO logging
+2025-11-12 10:34:10,152 - INFO - ShieldNet App Initialized Successfully with full Socket.IO logging
+2025-11-12 10:43:30,149 - INFO - ShieldNet App Initialized Successfully with full Socket.IO logging
+2025-11-12 10:53:14,883 - INFO - ShieldNet App Initialized Successfully with full Socket.IO logging
+2025-11-12 11:00:10,652 - INFO - ShieldNet App Initialized Successfully with full Socket.IO logging
+2025-11-12 11:06:22,309 - INFO - ShieldNet App Initialized Successfully with full Socket.IO logging
+2025-11-12 11:15:57,898 - INFO - ShieldNet App Initialized Successfully with full Socket.IO logging
+2025-11-12 11:48:37,717 - INFO - ShieldNet App Initialized Successfully with full Socket.IO logging
+2025-11-12 12:02:13,412 - INFO - ShieldNet App Initialized Successfully with full Socket.IO logging
+2025-11-12 12:06:05,615 - INFO - ShieldNet App Initialized Successfully with full Socket.IO logging
+2025-11-12 12:21:28,824 - INFO - ShieldNet App Initialized Successfully with full Socket.IO logging
+2025-11-12 12:55:40,940 - INFO - ShieldNet App Initialized Successfully with full Socket.IO logging
+2025-11-12 14:31:22,779 - INFO - ShieldNet App Initialized Successfully with full Socket.IO logging
+2025-11-12 14:31:58,038 - INFO - [lan] session created: vishal @ 10.232.168.52 otp=621097
+2025-11-12 14:31:58,635 - INFO - [SocketIO] ukIEULkj12GkdA4bAAAB joined lan_621097
+2025-11-12 14:35:22,744 - INFO - ShieldNet App Initialized Successfully with full Socket.IO logging
+2025-11-12 14:35:47,771 - INFO - [lan] session created: vishal @ 10.232.168.52 otp=262426
+2025-11-12 14:35:48,037 - INFO - [SocketIO] HxLIMpZJrS8zprRDAAAB joined lan_262426
+2025-11-12 14:36:33,952 - INFO - [SocketIO] CT2VIGHcEgVR2q7xAAAD joined lan_262426
+2025-11-12 14:57:52,704 - INFO - ShieldNet App Initialized Successfully with full Socket.IO logging
+2025-11-12 14:57:52,763 - INFO - [SocketIO] AoKwXBnLLaDlHxCaAAAB joined lan_262426
+2025-11-12 14:59:14,343 - INFO - [lan] session created: test @ 10.232.168.52 otp=161078
+2025-11-12 14:59:14,710 - INFO - [SocketIO] sslXnT9lrOGAXt-ZAAAD joined lan_161078
+2025-11-12 14:59:14,795 - INFO - [SocketIO] offer for lan_161078 from sslXnT9lrOGAXt-ZAAAD
+2025-11-12 14:59:46,935 - INFO - [SocketIO] tk5vG65Kv9USEtGMAAAF joined lan_161078
+2025-11-12 14:59:46,950 - INFO - [SocketIO] offer for lan_161078 from sslXnT9lrOGAXt-ZAAAD
+2025-11-12 14:59:47,003 - INFO - [SocketIO] answer for lan_161078 from tk5vG65Kv9USEtGMAAAF
+2025-11-12 15:00:40,446 - INFO - [SocketIO] 6bfD-jq-JPsCql8yAAAH joined lan_161078
+2025-11-12 15:00:40,460 - INFO - [SocketIO] offer for lan_161078 from sslXnT9lrOGAXt-ZAAAD
+2025-11-12 15:00:40,550 - INFO - [SocketIO] answer for lan_161078 from 6bfD-jq-JPsCql8yAAAH
+2025-11-12 15:41:02,855 - INFO - ShieldNet App Initialized Successfully with full Socket.IO logging
+2025-11-12 15:42:46,382 - INFO - [lan] session created: vishal @ 10.232.168.52 otp=840443
+2025-11-12 15:42:46,615 - INFO - [SocketIO] aKvuu8cFknY8k0dqAAAB joined lan_840443
+2025-11-12 15:42:46,668 - INFO - [SocketIO] offer for lan_840443 from aKvuu8cFknY8k0dqAAAB
+2025-11-12 15:43:52,900 - INFO - [SocketIO] 0ehwD8JlJBTNUyauAAAD joined lan_840443
+2025-11-12 15:43:52,916 - INFO - [SocketIO] offer for lan_840443 from aKvuu8cFknY8k0dqAAAB
+2025-11-12 15:43:52,954 - INFO - [SocketIO] offer for lan_840443 from 0ehwD8JlJBTNUyauAAAD
+2025-11-12 15:43:52,965 - INFO - [SocketIO] answer for lan_840443 from 0ehwD8JlJBTNUyauAAAD
+2025-11-12 15:43:52,977 - INFO - [SocketIO] answer for lan_840443 from aKvuu8cFknY8k0dqAAAB
+2025-11-12 15:55:59,438 - INFO - [SocketIO] CDvWC3NaFW79agVmAAAF joined lan_840443
+2025-11-12 15:56:00,474 - INFO - [SocketIO] offer for lan_840443 from CDvWC3NaFW79agVmAAAF
+2025-11-12 15:56:01,874 - INFO - [lan] session ended
+2025-11-12 15:56:10,617 - INFO - [lan] session created: vishal @ 10.232.168.52 otp=728885
+2025-11-12 15:56:10,743 - INFO - [SocketIO] LfpL1ugiBOIQYMFCAAAH joined lan_728885
+2025-11-12 15:56:11,796 - INFO - [SocketIO] offer for lan_728885 from LfpL1ugiBOIQYMFCAAAH
+2025-11-12 15:56:16,466 - INFO - [SocketIO] qrFRTQEWLNxEY4mkAAAJ joined lan_840443
+2025-11-12 15:56:16,537 - INFO - [SocketIO] offer for lan_840443 from qrFRTQEWLNxEY4mkAAAJ
+2025-11-12 15:56:19,031 - INFO - [SocketIO] tYboLWaTGwHo7v03AAAL joined lan_728885
+2025-11-12 15:56:20,051 - INFO - [SocketIO] offer for lan_728885 from LfpL1ugiBOIQYMFCAAAH
+2025-11-12 15:56:20,060 - INFO - [SocketIO] offer for lan_728885 from tYboLWaTGwHo7v03AAAL
+2025-11-12 15:56:20,085 - INFO - [SocketIO] answer for lan_728885 from LfpL1ugiBOIQYMFCAAAH
+2025-11-12 15:56:20,129 - INFO - [SocketIO] answer for lan_728885 from tYboLWaTGwHo7v03AAAL
+2025-11-12 15:56:22,652 - INFO - [SocketIO] jVBbw1uq-pkVOU2dAAAN joined lan_728885
+2025-11-12 15:56:23,681 - INFO - [SocketIO] offer for lan_728885 from LfpL1ugiBOIQYMFCAAAH
+2025-11-12 15:56:23,702 - INFO - [SocketIO] answer for lan_728885 from jVBbw1uq-pkVOU2dAAAN
+2025-11-12 15:56:23,787 - INFO - [SocketIO] offer for lan_728885 from jVBbw1uq-pkVOU2dAAAN
+2025-11-12 15:56:23,800 - INFO - [SocketIO] answer for lan_728885 from LfpL1ugiBOIQYMFCAAAH
+2025-11-12 15:56:33,918 - INFO - [SocketIO] offer for lan_728885 from LfpL1ugiBOIQYMFCAAAH
+2025-11-12 15:56:56,065 - INFO - [SocketIO] vk4fyShuhVnPWuZAAAAP joined lan_728885
+2025-11-12 15:56:57,084 - INFO - [SocketIO] offer for lan_728885 from LfpL1ugiBOIQYMFCAAAH
+2025-11-12 15:56:57,106 - INFO - [SocketIO] offer for lan_728885 from vk4fyShuhVnPWuZAAAAP
+2025-11-12 15:56:57,135 - INFO - [SocketIO] answer for lan_728885 from LfpL1ugiBOIQYMFCAAAH
+2025-11-12 15:56:57,165 - INFO - [SocketIO] answer for lan_728885 from vk4fyShuhVnPWuZAAAAP
+2025-11-12 15:59:01,485 - INFO - ShieldNet App Initialized Successfully with full Socket.IO logging
+2025-11-12 15:59:02,964 - INFO - [SocketIO] GfRjssItBps_DL3RAAAB joined lan_728885
+2025-11-12 15:59:04,052 - INFO - [SocketIO] offer for lan_728885 from GfRjssItBps_DL3RAAAB
+2025-11-12 15:59:31,477 - INFO - [lan] session created: vishal @ 10.232.168.52 otp=196398
+2025-11-12 15:59:31,715 - INFO - [SocketIO] MxcbVoASnkmZmXRIAAAD joined lan_196398
+2025-11-12 16:00:02,718 - INFO - [SocketIO] jrIWSt0cOkU7b2jvAAAF joined lan_196398
+2025-11-12 16:00:03,949 - INFO - [SocketIO] offer for lan_196398 from jrIWSt0cOkU7b2jvAAAF
+2025-11-12 16:00:04,010 - INFO - [SocketIO] answer for lan_196398 from MxcbVoASnkmZmXRIAAAD
+2025-11-12 16:13:17,740 - INFO - [SocketIO] ui4Loy93SBSsvjTrAAAP joined lan_196398

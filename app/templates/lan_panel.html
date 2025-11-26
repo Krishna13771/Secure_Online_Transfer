@@ -1,0 +1,154 @@
+{% block content %}
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="utf-8">
+    <title>ShieldNet | LAN Panel</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Socket -->
+    <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: #0d1117;
+            color: #c9d1d9;
+
+            background-image:
+                linear-gradient(to right, rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .cyber-card {
+            background-color: rgba(22, 27, 34, 0.85);
+            backdrop-filter: blur(6px);
+            border: 1px solid #30363d;
+        }
+
+        .btn-primary { background-color: #238636; color: white; }
+        .btn-primary:hover { background-color: #2ea043; }
+
+        .btn-danger { background-color: #da3633; color: white; }
+        .btn-danger:hover { background-color: #f85149; }
+
+        input[type="file"]::file-selector-button {
+            background-color: #238636;
+            color: white;
+            font-weight: 600;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen">
+
+<nav class="sticky top-0 z-20 w-full bg-black/30 backdrop-blur-md border-b border-cyan-500/20 px-6 py-4 flex justify-between items-center">
+
+    <a href="{{ url_for('main.home') }}" class="flex items-center space-x-2 group">
+        <svg class="w-8 h-8 text-cyan-400 group-hover:scale-110 transition" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L3 6V12C3 17.5 7.3 21.8 12 23C16.7 21.8 21 17.5 21 12V6L12 2Z"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="text-xl font-bold text-cyan-400 tracking-wide">ShieldNet</span>
+    </a>
+
+    <div class="flex items-center space-x-3">
+        <span class="hidden sm:inline text-gray-300 text-sm">Hi, {{ session_info.username }}</span>
+
+        <div class="relative w-9 h-9 rounded-full bg-cyan-400/10 border border-cyan-400/40 flex items-center justify-center">
+            <svg class="w-5 h-5 text-cyan-300" viewBox="0 0 24 24" fill="none">
+                <path d="M12 12C14.76 12 17 9.76 17 7
+                C17 4.24 14.76 2 12 2
+                C9.24 2 7 4.24 7 7
+                C7 9.76 9.24 12 12 12ZM12 12
+                C7.05 12 3 16.05 3 21H21
+                C21 16.05 16.95 12 12 12Z"
+                    stroke="currentColor" stroke-width="1.3"/>
+            </svg>
+        </div>
+
+        <a href="{{ url_for('auth.logout') }}"
+           class="text-sm font-semibold text-red-400 hover:text-red-300 transition">
+            Logout
+        </a>
+    </div>
+</nav>
+
+<div class="w-full max-w-4xl mx-auto p-6 space-y-8">
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="cyber-card p-4 border-l-4 border-green-500 text-green-400">
+          {% for m in messages %} <p>{{ m }}</p> {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <div class="cyber-card p-6 rounded-lg">
+        <h2 class="text-3xl font-bold text-cyan-400 mb-4">LAN Shared Files</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-gray-900/40 p-4 rounded border border-gray-700">
+                <span class="text-gray-400 text-sm">Session OTP</span>
+                <p class="text-3xl font-bold text-green-400 tracking-widest">{{ session_info.otp }}</p>
+            </div>
+
+            <div class="bg-gray-900/40 p-4 rounded border border-gray-700">
+                <span class="text-gray-400 text-sm">Session Username</span>
+                <p class="text-3xl font-bold">{{ session_info.username }}</p>
+            </div>
+        </div>
+
+        <form method="POST" action="{{ url_for('lan.upload_file') }}" enctype="multipart/form-data"
+              class="mt-6 flex flex-col sm:flex-row gap-4 items-center">
+            <input type="file" name="file" required class="w-full text-gray-400 file:cursor-pointer">
+            <button type="submit" class="btn-primary px-6 py-2 rounded-md shadow">
+                Upload File
+            </button>
+        </form>
+    </div>
+
+    <div class="cyber-card p-6 rounded-lg">
+        <h2 class="text-3xl font-bold text-cyan-400 mb-4">Available Files</h2>
+
+        <div class="bg-gray-900/40 min-h-[100px] p-4 rounded border border-gray-700 flex items-center">
+            <ul class="text-gray-300 space-y-1">
+                {% if files %}
+                    {% for f in files %}
+                      <li>
+                        <a href="{{ url_for('lan.download_file', filename=f) }}"
+                           class="text-cyan-400 hover:underline">{{ f }}</a>
+                      </li>
+                    {% endfor %}
+                {% else %}
+                    <li>No files in this session yet.</li>
+                {% endif %}
+            </ul>
+        </div>
+
+        <form action="{{ url_for('lan.end_session') }}" method="get" class="text-right mt-6">
+            <button class="btn-danger px-6 py-2 rounded-md">
+                End Session (Delete all files)
+            </button>
+        </form>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="mt-16 py-6 text-center border-t border-cyan-500/20 text-gray-500 text-sm">
+    © 2025 | Developed by <span class="text-cyan-400 font-semibold">Team CyberWarriors</span>
+</footer>
+
+</body>
+</html>
+{% endblock %}

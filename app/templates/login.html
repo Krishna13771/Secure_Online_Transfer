@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ShieldNet Login | ShieldNet</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+      animation: fadeIn 0.8s ease-in;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* LEFT Cosmic Side */
+    .left {
+      flex: 1;
+      background: black;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* LOGO (Same 400px as signup page) */
+    .shield-logo {
+      width: 400px;
+      height: auto;
+      margin-bottom: 20px;
+      z-index: 3;
+      filter: drop-shadow(0 0 10px rgba(0, 200, 255, 0.6));
+      animation: float 4s ease-in-out infinite;
+      user-select: none;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    .left h1 {
+      font-size: 2.8rem;
+      margin: 0;
+      z-index: 2;
+      color: #b0e0ff;
+      text-shadow: 0 0 15px rgba(0, 191, 255, 0.8);
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #6dcff6; }
+      to { text-shadow: 0 0 45px #00bfff; }
+    }
+
+    .stars {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 4s infinite ease-in-out alternate;
+      transform: translate3d(0, 0, 0);
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.3; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* RIGHT Login Panel */
+    .right {
+      flex: 1;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-top-left-radius: 40px;
+      border-bottom-left-radius: 40px;
+      box-shadow: -10px 0 25px rgba(0, 0, 0, 0.15);
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+    }
+
+    .login-box {
+      width: 80%;
+      max-width: 350px;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .login-box h2 {
+      text-align: left;
+      margin-bottom: 25px;
+      color: #111;
+      font-weight: 600;
+    }
+
+    form p {
+      margin-bottom: 18px;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background: #f9f9f9;
+      font-size: 0.95rem;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    input:focus {
+      border-color: #00bfff;
+      box-shadow: 0 0 8px #6dcff6;
+      background: #fff;
+    }
+
+    input[type="submit"] {
+      background: linear-gradient(90deg, #00bfff, #6dcff6);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      margin-top: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 12px #00bfff;
+    }
+
+    .links {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .links a {
+      color: #0077ff;
+      text-decoration: none;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 850px) {
+      body { flex-direction: column; }
+      .left, .right {
+        width: 100%;
+        height: 50vh;
+        border-radius: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- LEFT PANEL -->
+  <div class="left">
+    <div class="stars" id="stars"></div>
+
+    <!-- SAME LOGO AS SIGNUP PAGE -->
+    <img src="{{ url_for('static', filename='images/shieldnet.jpeg') }}"
+        class="shield-logo"
+        alt="ShieldNet Logo">
+
+    <h1>Welcome Back</h1>
+  </div>
+
+  <!-- RIGHT LOGIN PANEL -->
+  <div class="right">
+    <div class="login-box">
+      <h2>Log in to Your Account</h2>
+
+      <form method="POST" action="">
+        {{ form.hidden_tag() }}
+
+        <p>{{ form.email.label }}<br>
+          {{ form.email(size=32, placeholder="Enter your email") }}</p>
+
+        <p>{{ form.password.label }}<br>
+          {{ form.password(size=32, placeholder="Enter your password") }}</p>
+
+        <p>{{ form.submit(class_="btn") }}</p>
+      </form>
+
+      <div class="links">
+        <p>Don't have an account?
+          <a href="{{ url_for('auth.signup') }}">Sign up</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STAR GENERATOR -->
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const stars = document.getElementById("stars");
+      const count = 120;
+      const fragment = document.createDocumentFragment();
+
+      for (let i = 0; i < count; i++) {
+        const star = document.createElement("div");
+        star.classList.add("star");
+        const size = (Math.random() * 2 + 1).toFixed(2);
+        star.style.width = ${size}px;
+        star.style.height = ${size}px;
+        star.style.top = ${Math.random() * 100}%;
+        star.style.left = ${Math.random() * 100}%;
+        star.style.animationDelay = ${Math.random() * 5}s;
+        fragment.appendChild(star);
+      }
+
+      stars.appendChild(fragment);
+    });
+  </script>
+
+</body>
+</html>

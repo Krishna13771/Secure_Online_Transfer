@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title or "ShieldNet | Secure File Transfer" }}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Orbitron:wght@500;700&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top left, #0a192f, #00111f 60%, #001826);
+      color: #e5f4ff;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    .glow-text {
+      background: linear-gradient(90deg, #00eaff, #00bcd4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(18px);
+      border-radius: 1.5rem;
+      box-shadow: 0 8px 25px rgba(0, 200, 255, 0.15);
+      transition: all 0.4s ease;
+    }
+    .glass-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 35px rgba(0, 200, 255, 0.25);
+    }
+
+    .btn-glow {
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      box-shadow: 0 0 15px rgba(0, 180, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+    .btn-glow:hover {
+      box-shadow: 0 0 25px rgba(0, 200, 255, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .glow-logo {
+      filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.6));
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #00eaff;
+      font-size: 14px;
+      opacity: 0.8;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, -10px); }
+    }
+
+    .faq-item {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 16px 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .faq-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .faq-answer {
+      display: none;
+      margin-top: 10px;
+      color: #b4d7e5;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <nav class="w-full bg-transparent px-8 py-5 flex justify-between items-center border-b border-cyan-500/20">
+    <div class="flex items-center space-x-2">
+      <svg class="w-8 h-8 text-cyan-400 glow-logo" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L3 6V12C3 17.5 7.3 21.8 12 23C16.7 21.8 21 17.5 21 12V6L12 2Z"
+              stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="text-xl font-orbitron font-bold tracking-wide glow-text">ShieldNet</span>
+    </div>
+
+    <div class="flex items-center space-x-3 text-sm">
+      <span class="hidden sm:inline text-gray-400">Guest User</span>
+      <div class="relative w-9 h-9 rounded-full bg-cyan-100/10 flex items-center justify-center border border-cyan-400/40">
+        <svg class="w-5 h-5 text-cyan-300" viewBox="0 0 24 24" fill="none">
+          <path d="M12 12C14.76 12 17 9.76 17 7C17 4.24 14.76 2 12 2C9.24 2 7 4.24 7 7C7 9.76 9.24 12 12 12ZM12 12C7.05 12 3 16.05 3 21H21C21 16.05 16.95 12 12 12Z"
+                stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <main class="container mx-auto px-6 md:px-12 lg:px-20 py-16 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center relative">
+    <div class="glass-card p-10 text-center max-w-md mx-auto lg:mx-0">
+      <div class="flex justify-center mb-6">
+        <svg class="w-14 h-14 text-cyan-400 glow-logo" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L3 6V12C3 17.5 7.3 21.8 12 23C16.7 21.8 21 17.5 21 12V6L12 2Z"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h1 class="text-3xl font-bold mb-2 text-white">Transfer Files with Confidence</h1>
+      <p class="text-gray-400 mb-8">
+        Fast. Encrypted. Private. Files are exchanged through a secure channel — 
+        no permanent storage, no data tracking.
+      </p>
+
+      <div class="space-y-4">
+        <a href="{{ url_for('auth.signup') }}">
+          <button class="w-full py-3 rounded-xl text-lg font-semibold text-white btn-glow">SIGN UP</button>
+        </a>
+        <a href="{{ url_for('auth.login') }}">
+          <button class="w-full py-3 rounded-xl text-lg font-semibold border border-cyan-400/40 bg-transparent hover:bg-cyan-500/20 transition duration-200">LOGIN</button>
+        </a>
+      </div>
+
+      <p class="text-sm text-gray-400 mt-8">
+        By continuing, you agree to ShieldNet’s <span class="text-cyan-400 hover:underline">Terms of Service</span>.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-5xl font-extrabold mb-6 leading-tight">
+        Your Files Deserve <span class="glow-text block sm:inline">Total Privacy.</span>
+      </h2>
+      <p class="text-lg text-gray-400 mb-10 max-w-lg">
+        ShieldNet ensures every transfer is end-to-end encrypted and temporary. 
+        Data is relayed securely and auto-erased once the session ends — 
+        nothing ever stays on our servers.
+      </p>
+
+      <ul class="space-y-5 text-gray-300">
+        <li class="flex items-start">
+          <svg class="w-6 h-6 text-cyan-400 mr-3 mt-1" viewBox="0 0 24 24" fill="none">
+            <path d="M4 12.6L8.9 17.5L20 6.5"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <p class="font-bold text-white">Temporary Encrypted Storage</p>
+            <p class="text-gray-400 text-sm">Files exist only for the duration of transfer and are erased automatically after completion.</p>
+          </div>
+        </li>
+        <li class="flex items-start">
+          <svg class="w-6 h-6 text-cyan-400 mr-3 mt-1" viewBox="0 0 24 24" fill="none">
+            <path d="M4 12.6L8.9 17.5L20 6.5"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <p class="font-bold text-white">No Logs or Tracking</p>
+            <p class="text-gray-400 text-sm">Once the transfer completes, all temporary data is wiped from our systems.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="scroll-indicator">⬇ Scroll to Explore</div>
+  </main>
+
+  <!-- TRANSFER METHODS SECTION -->
+  <section class="text-center bg-gradient-to-b from-[#001826] to-[#002a3d] py-20">
+    <h2 class="text-4xl font-bold mb-10 glow-text">Choose Your Transfer Mode</h2>
+    <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+      <div class="glass-card p-8 hover:scale-105 transition-transform duration-300">
+        <h3 class="text-2xl font-semibold text-cyan-400 mb-3">🌐 Online Transfer</h3>
+        <p class="text-gray-300 text-base leading-relaxed">
+          Send files securely across networks. Files are encrypted and transmitted through a protected connection, 
+          automatically removed after delivery.
+        </p>
+      </div>
+
+      <div class="glass-card p-8 hover:scale-105 transition-transform duration-300">
+        <h3 class="text-2xl font-semibold text-cyan-400 mb-3">💻 LAN Transfer</h3>
+        <p class="text-gray-300 text-base leading-relaxed">
+          Transfer files instantly within your local network — fast, private, and completely offline. 
+          Ideal for offices or close-range sharing.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNOLOGY BEHIND SECTION -->
+  <section class="py-20 text-center bg-gradient-to-b from-[#002a3d] to-[#001f2e]">
+    <h2 class="text-4xl font-bold mb-12 glow-text">Technology Behind ShieldNet</h2>
+    <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto px-6">
+      <div class="glass-card p-8">
+        <h3 class="text-xl font-semibold text-cyan-400 mb-2">🔐 AES-256 Encryption</h3>
+        <p class="text-gray-300 text-sm leading-relaxed">
+          Each transfer is secured with AES-256 encryption — an industry standard ensuring your files stay private and protected.
+        </p>
+      </div>
+
+      <div class="glass-card p-8">
+        <h3 class="text-xl font-semibold text-cyan-400 mb-2">💻 LAN Socket Communication</h3>
+        <p class="text-gray-300 text-sm leading-relaxed">
+          For LAN transfers, ShieldNet directly connects devices using local socket connections, avoiding any cloud dependency.
+        </p>
+      </div>
+
+      <div class="glass-card p-8">
+        <h3 class="text-xl font-semibold text-cyan-400 mb-2">☁️ Temporary Encrypted Relay</h3>
+        <p class="text-gray-300 text-sm leading-relaxed">
+          Online transfers use a secure temporary relay. Data is encrypted, sent, and automatically erased after session completion.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="py-20 text-center bg-[#00111f]">
+    <h2 class="text-4xl font-bold mb-12 glow-text">Frequently Asked Questions</h2>
+    <div class="max-w-3xl mx-auto space-y-6 text-left">
+      <div class="faq-item">
+        <h3 class="font-semibold text-cyan-300">🔒 Is my data permanently stored?</h3>
+        <div class="faq-answer">No. ShieldNet doesn’t retain your files after transfer completion. 
+          All temporary data is deleted immediately once delivery is confirmed.</div>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="font-semibold text-cyan-300">⚙️ Do I need an account to send files?</h3>
+        <div class="faq-answer">You can create or join sessions easily. Account creation helps manage your sessions 
+          and improves transfer security.</div>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="font-semibold text-cyan-300">💾 How big a file can I send?</h3>
+        <div class="faq-answer">File size limits depend on your current network configuration, 
+          but the system supports large file transfers efficiently.</div>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="font-semibold text-cyan-300">🧰 What happens if my session expires?</h3>
+        <div class="faq-answer">Once your session expires, all files linked to it are automatically cleared 
+          from the system for your safety.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="text-center py-6 border-t border-cyan-500/20 text-gray-500 text-sm">
+    © 2025 ShieldNet. All Rights Reserved.
+  </footer>
+
+  <!-- ANIMATIONS -->
+  <script>
+    ScrollReveal().reveal('.glass-card', {
+      duration: 1000,
+      distance: '40px',
+      easing: 'ease-in-out',
+      origin: 'bottom',
+      interval: 200,
+      opacity: 0,
+    });
+
+    ScrollReveal().reveal('.faq-item', {
+      duration: 900,
+      distance: '35px',
+      origin: 'bottom',
+      opacity: 0,
+      interval: 150,
+      easing: 'ease-in-out'
+    });
+
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const answer = item.querySelector('.faq-answer');
+        const open = answer.style.display === 'block';
+        document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+        answer.style.display = open ? 'none' : 'block';
+      });
+    });
+  </script>
+</body>
+</html>
